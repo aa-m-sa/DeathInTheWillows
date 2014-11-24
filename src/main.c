@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <assert.h>
 #include "game.h"
 #include "mapgen.h"
@@ -32,7 +33,8 @@ int main(int arc, char **argv)
         printVisuals(game);
         char input;
         // read input from stdin
-        gameOn = processInput(game, input);
+        //gameOn = processInput(game, input);
+        gameOn = 0;
     }
 
     // free allocated memory objs etc
