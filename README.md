@@ -2,4 +2,4 @@
 
 A Steampunk themed roguelike.
 
-(Also, a practise project to learn som C++ skills.)
+(Also, a practise project to hone my C skills.)
