@@ -1,6 +1,6 @@
-SRC_FILES=main.c
+SRC_FILES=main.c mapgen.c
 CC = gcc
-CFLAGS = -pedantic -Wall -Wextra -g
+CFLAGS = -pedantic -Wall -Wextra -std=c99 -g
 
 all: main
 
