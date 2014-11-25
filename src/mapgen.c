@@ -48,13 +48,41 @@ Level *createLevel(char *name)
 void generateLevels(Game *game)
 {
     // levels list
-    Level *levels = game->levels;
     // make space for just one level in the list for testing
     unsigned int numLevels = 1;
     game->numLevels = numLevels;
-    levels = malloc(numLevels * sizeof(Level));
+    game->levels = malloc(numLevels * sizeof(Level *));
 
     // populate it with default level
-    levels[0] = *createLevel("default");
+    char *name = "default";
+    game->levels[0] = createLevel(name);
+}
+
+void freeLevel(Level *level)
+{
+    if (level->monsters)
+        free(level->monsters);
+
+    if (level->map.tile){
+        for (unsigned int i = 0; i < level->map.mapHeight; i++) {
+            free(level->map.tile[i]);
+        }
+        free(level->map.tile);
+    }
+
+    free(level);
+}
+
+void freeAll(Game *game)
+{
+    if(game->levels) {
+        // remove levels
+        for (unsigned int i = 0; i < game->numLevels; i++) {
+            freeLevel(game->levels[i]);
+        }
+        game->numLevels = 0;
+        free(game->levels);
+    }
+
 }
 

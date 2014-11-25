@@ -31,13 +31,16 @@ int main(int arc, char **argv)
     while(gameOn) {
         // show map etc
         printVisuals(game);
-        char input;
+        //char input;
         // read input from stdin
         //gameOn = processInput(game, input);
+        Level *curLevel = game->levels[0];
+        printf("%s\n", curLevel->name);
         gameOn = 0;
     }
 
     // free allocated memory objs etc
     freeAll(game);
+    free(game);
     return(0);
 }
