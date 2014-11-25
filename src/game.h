@@ -55,6 +55,7 @@ typedef struct {
 typedef struct game_st {
     unsigned int numLevels;
     Level **levels;
+    Level *currentLevel;
     Creature player;
     Options opts;
 } Game;

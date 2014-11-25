@@ -3,6 +3,7 @@
 #include <assert.h>
 #include "game.h"
 #include "mapgen.h"
+#include "print.h"
 
 void initGame(Game *game, int arc, char **argv)
 {
@@ -14,6 +15,7 @@ void initGame(Game *game, int arc, char **argv)
 
     if (!loadSave) {
         generateLevels(game);
+        game->currentLevel = game->levels[0];
         //createPlayer(game);
     }
 
@@ -30,12 +32,12 @@ int main(int arc, char **argv)
 
     while(gameOn) {
         // show map etc
+        Level *curLevel = game->currentLevel;
+        printf("%s\n", curLevel->name);
         printVisuals(game);
         //char input;
         // read input from stdin
         //gameOn = processInput(game, input);
-        Level *curLevel = game->levels[0];
-        printf("%s\n", curLevel->name);
         gameOn = 0;
     }
 

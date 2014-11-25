@@ -9,7 +9,7 @@ void generateMap(Level *level)
     Map *map = &level->map;
     // hardcoded map size, not good
     unsigned int height = 10;
-    unsigned int width = 10;
+    unsigned int width = 20;
     map->mapHeight = height;
     map->mapWidth = width;
     map->tile = malloc(sizeof(Tile *) * height);
