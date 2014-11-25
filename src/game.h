@@ -34,6 +34,7 @@ typedef struct creature_st {
     Point pos;
     float hp;
     unsigned int maxhp;
+    int playerControl;
     void (*move)(struct level_st *, struct creature_st *);  // current movement algorithm for monster
     void (*attack)(struct level_st *, struct creature_st *);  // current attack algorithm for monster
 } Creature;

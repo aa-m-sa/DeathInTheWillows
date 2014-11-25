@@ -1,4 +1,4 @@
-SRC_FILES=main.c mapgen.c print.c
+SRC_FILES=main.c mapgen.c print.c player.c
 CC = gcc
 CFLAGS = -pedantic -Wall -Wextra -std=c99 -g
 LFLAGS = -lncurses

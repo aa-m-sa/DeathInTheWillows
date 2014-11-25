@@ -17,7 +17,7 @@ void initGame(Game *game, int arc, char **argv)
     if (!loadSave) {
         generateLevels(game);
         game->currentLevel = game->levels[0];
-        //createPlayer(game);
+        createPlayer(game);
     }
 
 }
