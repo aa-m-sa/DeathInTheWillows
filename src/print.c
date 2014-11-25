@@ -21,6 +21,7 @@ void endCurses()
 
 char mapChar(Level *level, unsigned int x, unsigned int y)
 {
+    // representation of tiles as ASCII chars
     Map *map = &level->map;
     char c = '?';
     switch(map->tile[y][x]) {
