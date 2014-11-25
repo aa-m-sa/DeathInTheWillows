@@ -24,25 +24,31 @@ char mapChar(Level *level, unsigned int x, unsigned int y)
     Map *map = &level->map;
     char c = '?';
     switch(map->tile[y][x]) {
-    case TILE_WALL:
-            c = '#';
-            break;
-    case TILE_OPEN:
-            c = '.';
-            break;
-    case TILE_ROOM:
-            c = '.';
-            break;
+        case TILE_WALL:
+                c = '#';
+                break;
+        case TILE_OPEN:
+                c = '.';
+                break;
+        case TILE_ROOM:
+                c = '.';
+                break;
     }
 
     return c;
 }
 
-void printLevel(Level *level)
+void printCurLevel(Game *game)
 {
+    Level *level = game->currentLevel;
     Map *map = &level->map;
+
+    // where the map is printed on screen
     unsigned int rowOffset = 2;
+
+    // print level name above the map
     mvprintw(0, 2, "Level: %s", level->name);
+
     // print the whole of map background
     for (unsigned int i = 0; i < map->mapHeight; ++i) {
         for (unsigned int j = 0; j < map->mapWidth; ++j) {
@@ -50,13 +56,19 @@ void printLevel(Level *level)
             mvaddch(i+rowOffset, j, c);
         }
     }
+
+    // print the player
+    // to be replaced with "printPlayer" or a more general "printCreature" fun
+    int px = game->player.pos.x;
+    int py = game->player.pos.y;
+    char pchar = game->player.sign;
+    mvaddch(py + rowOffset, px, pchar);
 }
 
 void printVisuals(Game *game)
 {
-    Level *curLevel = game->currentLevel;
     if (game->opts.showAll) {
-        printLevel(curLevel);
+        printCurLevel(game);
     }
     refresh();
 }
