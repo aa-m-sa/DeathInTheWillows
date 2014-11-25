@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <ncurses.h>
 #include "game.h"
 #include "mapgen.h"
 #include "print.h"
@@ -27,19 +28,21 @@ int main(int arc, char **argv)
     assert(game);
 
     initGame(game, arc, argv);
+    initCurses();
 
     int gameOn = 1;
-
     while(gameOn) {
         // show map etc
         Level *curLevel = game->currentLevel;
         printf("%s\n", curLevel->name);
         printVisuals(game);
-        //char input;
-        // read input from stdin
+        // read input
+        char input = getch();
         //gameOn = processInput(game, input);
         gameOn = 0;
     }
+
+    endCurses();
 
     // free allocated memory objs etc
     freeAll(game);

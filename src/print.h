@@ -5,7 +5,11 @@
 
 /* public functions in print.c*/
 
+void initCurses();
+void endCurses();
+
 void printVisuals(Game *game);
+
 
 
 #endif // PRINT_H

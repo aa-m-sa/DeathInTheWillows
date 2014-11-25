@@ -1,6 +1,21 @@
 /* visual output implementation*/
 #include <stdio.h>
+#include <ncurses.h>
 #include "print.h"
+
+void initCurses()
+{
+    initscr();
+    raw();
+    noecho();
+    keypad(stdscr, TRUE);
+    printw("Hello World !!!");
+}
+
+void endCurses()
+{
+    endwin();
+}
 
 char mapChar(Level *level, unsigned int x, unsigned int y)
 {
@@ -28,10 +43,10 @@ void printLevel(Level *level)
     for (unsigned int i = 0; i < map->mapHeight; ++i) {
         for (unsigned int j = 0; j < map->mapWidth; ++j) {
             char c = mapChar(level, j, i);
-            printf("%c", c);
+            mvaddch(i, j, c);
         }
-        printf("\n");
     }
+    refresh();
 }
 
 void printVisuals(Game *game)
