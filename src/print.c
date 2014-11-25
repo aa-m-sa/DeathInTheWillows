@@ -9,6 +9,9 @@ void initCurses()
     raw();
     noecho();
     keypad(stdscr, TRUE);
+
+    // cursor normally invisible
+    curs_set(0);
 }
 
 void endCurses()
