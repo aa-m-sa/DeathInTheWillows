@@ -9,7 +9,6 @@ void initCurses()
     raw();
     noecho();
     keypad(stdscr, TRUE);
-    printw("Hello World !!!");
 }
 
 void endCurses()
@@ -39,14 +38,15 @@ char mapChar(Level *level, unsigned int x, unsigned int y)
 void printLevel(Level *level)
 {
     Map *map = &level->map;
+    unsigned int rowOffset = 2;
+    mvprintw(0, 2, "Level: %s", level->name);
     // print the whole of map background
     for (unsigned int i = 0; i < map->mapHeight; ++i) {
         for (unsigned int j = 0; j < map->mapWidth; ++j) {
             char c = mapChar(level, j, i);
-            mvaddch(i, j, c);
+            mvaddch(i+rowOffset, j, c);
         }
     }
-    refresh();
 }
 
 void printVisuals(Game *game)
@@ -55,4 +55,5 @@ void printVisuals(Game *game)
     if (game->opts.showAll) {
         printLevel(curLevel);
     }
+    refresh();
 }

@@ -33,13 +33,14 @@ int main(int arc, char **argv)
     int gameOn = 1;
     while(gameOn) {
         // show map etc
-        Level *curLevel = game->currentLevel;
-        printf("%s\n", curLevel->name);
+        //Level *curLevel = game->currentLevel;
+        //printf("%s\n", curLevel->name);
         printVisuals(game);
         // read input
         char input = getch();
         //gameOn = processInput(game, input);
-        gameOn = 0;
+        if (input == 'q')
+            gameOn = 0;
     }
 
     endCurses();
