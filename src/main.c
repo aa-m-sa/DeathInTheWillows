@@ -3,8 +3,10 @@
 #include <assert.h>
 #include <ncurses.h>
 #include "game.h"
+#include "player.h"
 #include "mapgen.h"
 #include "print.h"
+#include "input.h"
 
 void initGame(Game *game, int arc, char **argv)
 {
@@ -38,9 +40,7 @@ int main(int arc, char **argv)
         printVisuals(game);
         // read input
         char input = getch();
-        //gameOn = processInput(game, input);
-        if (input == 'q')
-            gameOn = 0;
+        gameOn = processInput(game, input);
     }
 
     endCurses();
